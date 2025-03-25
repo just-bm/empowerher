@@ -13,7 +13,7 @@ import {
 function Map() {
   const { isLoaded } = useJsApiLoader({
     // api key here__ dk
-    googleMapsApiKey: "****************************************,"  
+    googleMapsApiKey: "****************************************", 
     libraries: ['places'],
   })
 
