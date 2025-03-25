@@ -8,6 +8,8 @@ import {
   signOut
 } from "firebase/auth";
 
+const googleMapsApiKey = "AIzaSyADmVFaQgTTrStbJ56akuwhHAMINiHkrL4";
+
 const firebaseConfig = {
     apiKey: "AIzaSyCOLA3KaSeX_WuN137fvXZ-cZiWq9gLGh8",
     authDomain: "userauthetication-35c21.firebaseapp.com",
@@ -29,5 +31,6 @@ export {
   createUserWithEmailAndPassword,
   signInWithPopup,
   googleProvider,
-  signOut
+  signOut,
+  googleMapsApiKey
 };
