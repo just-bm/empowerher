@@ -1,0 +1,243 @@
+/* Sos.css */
+.sos-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .sos-header {
+    color: #ff4d4d;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+    letter-spacing: 1px;
+  }
+  
+  .sos-warning {
+    background: rgba(255, 77, 77, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid #ff4d4d;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .sos-button {
+    background: linear-gradient(to right, #ff4d4d, #ff1a1a);
+    color: white;
+    border: none;
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 1.5rem auto;
+    display: block;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .sos-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.6);
+  }
+  
+  .sos-button:active {
+    transform: translateY(1px);
+  }
+  
+  .countdown {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .countdown-number {
+    font-size: 5rem;
+    color: #ff4d4d;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+    animation: pulse 1s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+  
+  .emergency-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .action-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+  
+  .action-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .action-button svg {
+    font-size: 1.2rem;
+  }
+  
+  .cancel-button {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 1.5rem auto 0;
+    display: block;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .cancel-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+  
+  .emergency-contacts {
+    margin-top: 3rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .emergency-contacts h3 {
+    color: #4da6ff;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .emergency-contacts ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .emergency-contacts li {
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .emergency-contacts li:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateX(5px);
+  }
+  
+  .emergency-contacts svg {
+    color: #4da6ff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .sos-container {
+      padding: 1.5rem;
+      border-radius: 0;
+      min-height: 100vh;
+    }
+    
+    .emergency-actions {
+      grid-template-columns: 1fr;
+    }
+    
+    .sos-button {
+      width: 100%;
+    }
+  }
+  
+  /* Animation for SOS active state */
+  @keyframes emergencyFlash {
+    0%, 100% { background-color: rgba(255, 77, 77, 0.1); }
+    50% { background-color: rgba(255, 77, 77, 0.3); }
+  }
+  
+  .sos-active {
+    animation: emergencyFlash 2s infinite;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+
+
+
+
+
+/* Add these to your existing Sos.css */
+.status-info {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  .status-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .error {
+    color: #ff6b6b;
+  }
+  
+  .quick-action {
+    background: none;
+    border: none;
+    color: #4da6ff;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+  }
+  
+  .quick-action:hover {
+    color: #fff;
+  }
+  
+  /* Animation for active location sharing */
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  .sos-active .status-info p {
+    animation: pulse 2s infinite;
+  }

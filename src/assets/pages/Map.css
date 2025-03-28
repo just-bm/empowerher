@@ -1,108 +1,521 @@
+/* Base Styles */
 .map-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
   height: 100vh;
-  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.map-background {
-  position: absolute;
-  left: 0;
+/* Navbar Styles */
+.navbar {
+  position: fixed;
   top: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.control-panel {
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin: 1rem;
-  background-color: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  min-width: 500px;
-  z-index: 1;
-  position: relative;
-}
-
-.input-row {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.input-container {
-  flex-grow: 1;
-}
-
-.input-field {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-}
-
-.button-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.calculate-route-btn {
-  background-color: pink;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-.clear-route-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.bottom-section {
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #4285F4;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.location-buttons {
+.navbar-left {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.icon-button {
-  border-radius: 50%;
+.app-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.hamburger {
+  background: none;
   border: none;
-  padding: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.get-location-btn {
-  background-color: lightgreen;
+.search-form {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.tracking-btn {
-  background-color: lightblue;
+.search-form input {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 20px;
+  min-width: 200px;
+  outline: none;
 }
 
-.center-map-btn {
-  background-color: lightsalmon;
+.search-form button {
+  padding: 0.5rem 1rem;
+  background-color: #34A853;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.error-message {
-  background-color: #ffdddd;
-  color: red;
-  padding: 10px;
-  margin-bottom: 10px;
+.search-form button:hover {
+  background-color: #2d9248;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: white;
+  z-index: 1001;
+  transition: left 0.3s ease;
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar h2 {
+  color: #4285F4;
+  margin-top: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.radius-control {
+  margin-bottom: 1rem;
+}
+
+.radius-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.radius-control input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #4285F4;
+  color: white;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.action-button:hover {
+  background-color: #3367d6;
+}
+
+/* Legend Styles */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+  border: 1px solid #ddd;
+}
+
+.high-severity {
+  background-color: red;
+}
+
+.medium-severity {
+  background-color: orange;
+}
+
+.low-severity {
+  background-color: yellow;
+}
+
+/* Map Wrapper */
+.map-wrapper {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+
+  .search-form {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .search-form input {
+    flex-grow: 1;
+  }
+
+  .sidebar {
+    width: 250px;
+  }
+
+  .map-wrapper {
+    top: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.1rem;
+  }
+
+  .sidebar {
+    width: 220px;
+    padding: 1rem;
+  }
+}
+
+
+
+
+
+/* Search and Route Planning Styles */
+/* Map.css */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background-color: #4285F4;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+.search-form {
+  flex-grow: 1;
+  max-width: 500px;
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+}
+
+.search-form input {
+  flex-grow: 1;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+}
+
+.search-form button {
+  padding: 0.5rem 1rem;
+  background-color: #34A853;
+  color: white;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+}
+
+.search-result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  background-color: white;
+  z-index: 1001;
+  transition: left 0.3s ease;
+  padding: 1.5rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.radius-control {
+  margin-bottom: 1rem;
+}
+
+.radius-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.action-button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.action-button:hover {
+  background-color: #3367d6;
+}
+
+.action-button.secondary {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.action-button.secondary:hover {
+  background-color: #e1e1e1;
+}
+
+.small-button {
+  padding: 4px 8px;
+  font-size: 0.8em;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.small-button:hover {
+  background-color: #e1e1e1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 0.7rem;
+  border: 1px solid #ddd;
+}
+
+.high-severity {
+  background-color: #FF0000;
+}
+
+.medium-severity {
+  background-color: #FFA500;
+}
+
+.low-severity {
+  background-color: #FFFF00;
+}
+
+.route-planning {
+  padding: 15px;
+}
+
+.route-input {
+  margin-bottom: 15px;
+}
+
+.route-input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.route-input input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.route-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.route-buttons .action-button {
+  flex: 1;
+}
+
+.route-instructions {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.map-wrapper {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+
+  .search-form {
+    width: 100%;
+    margin-top: 0.8rem;
+    max-width: none;
+  }
+
+  .sidebar {
+    width: 250px;
+  }
+
+  .map-wrapper {
+    top: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.1rem;
+  }
+
+  .sidebar {
+    width: 220px;
+    padding: 1rem;
+  }
 }
