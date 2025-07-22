@@ -6,4 +6,9 @@ export default defineConfig({
   define: {
     'process.env': process.env,
   },
+  build: {
+    rollupOptions: {
+      external: ['@google/generative-ai'] // Add this
+    }
+  }
 });
